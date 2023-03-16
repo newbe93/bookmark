@@ -21,6 +21,9 @@ export let bookMark = createSlice({
       let categoryIndex = state.findIndex((item) => item.category === action.payload.category);
       let titleIndex = state[categoryIndex].list.findIndex((item) => item.title === action.payload.title);
       state[categoryIndex].list.splice(titleIndex, 1);
+      if (state[categoryIndex].list.length === 0) {
+        state.splice(categoryIndex, 1);
+      }
     },
     changeList(state, action) {
       let categoryIndex = state.findIndex((item) => item.category === action.payload.category);
@@ -115,11 +118,15 @@ export let searchBookMark = createSlice({
   reducers: {
     searchList(state, action) {
       state.push({ category: action.payload.category, list: action.payload.list });
+      // return action.payload;
+    },
+    clearList(state, action) {
+      return action.payload;
     },
   },
 });
 
-export let { searchList } = searchBookMark.actions;
+export let { searchList, clearList } = searchBookMark.actions;
 
 export let isSearch = createSlice({
   name: "isSearch",

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { changevalue, isSearch, searchList, searchMode } from "../store/userSlice";
+import { changevalue, clearList, isSearch, searchList, searchMode } from "../store/userSlice";
 import BookmarkCategory from "./BookmarkCategory";
 
 function MainContent() {
@@ -15,17 +15,27 @@ function MainContent() {
             placeholder="북마크 찾기"
             onChange={(e) => {
               dispatch(changevalue(e.target.value));
+              dispatch(searchMode(false));
             }}
           ></input>
           <button
             onClick={() => {
-              state.bookMark.map((a, i) => {
-                // bookMark 중에서 list중에서 title이 inputvalue를 갖고있는 list들
+              dispatch(clearList([]));
+              let searchCategory = state.bookMark.filter((a, i) => {
+                let result = a.list.findIndex((a) => {
+                  return a.title.includes(state.searchValue);
+                });
+
+                return result !== -1;
+              });
+
+              searchCategory.map((a) => {
                 let searchTitle = a.list.filter((a, i) => {
                   return a.title.includes(state.searchValue);
                 });
                 dispatch(searchList({ category: a.category, list: searchTitle }));
               });
+
               dispatch(searchMode(true));
             }}
           >
