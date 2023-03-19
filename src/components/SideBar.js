@@ -10,21 +10,23 @@ function SideBar() {
   let state = useSelector((state) => state);
 
   useEffect(() => {
-    dispatch(clearList([]));
-    let searchCategory = state.bookMark.filter((a, i) => {
-      let result = a.list.findIndex((a) => {
-        return a.title.includes(state.searchValue);
+    if (state.isSearch) {
+      dispatch(clearList([]));
+      let searchCategory = state.bookMark.filter((a, i) => {
+        let result = a.list.findIndex((a) => {
+          return a.title.includes(state.searchValue);
+        });
+
+        return result !== -1;
       });
 
-      return result !== -1;
-    });
-
-    searchCategory.map((a) => {
-      let searchTitle = a.list.filter((a, i) => {
-        return a.title.includes(state.searchValue);
+      searchCategory.map((a) => {
+        let searchTitle = a.list.filter((a, i) => {
+          return a.title.includes(state.searchValue);
+        });
+        dispatch(searchList({ category: a.category, list: searchTitle }));
       });
-      dispatch(searchList({ category: a.category, list: searchTitle }));
-    });
+    }
   }, [state.bookMark]);
   let options = state.bookMark;
   function clearAll() {

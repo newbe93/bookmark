@@ -15,7 +15,7 @@ export let bookMark = createSlice({
     addList(state, action) {
       let index = state.findIndex((a) => a.category === action.payload.category);
       let titleIndex = state[index].list.findIndex((item) => item.title === action.payload.list.title);
-      if (titleIndex !== -1) return;
+      // if (titleIndex !== -1) return;
       state[index].list.push(action.payload.list);
     },
     removeList(state, action) {
@@ -43,17 +43,20 @@ export let bookMark = createSlice({
       let categoryIndex = state.findIndex((item) => item.category === action.payload.category);
       state.splice(categoryIndex, 1);
     },
-    dragAndDrop(state, action) {
-      const { prevCategory, prevTitle, prevUrl, currentCategory, currentTitle, currentList } = action.payload;
+    // dragAndDrop(state, action) {
+    //   const { prevCategory, prevTitle, prevUrl, currentCategory, currentTitle, currentList } = action.payload;
 
-      let categoryIndex = state.findIndex((item) => item.category === currentCategory);
-      let titleIndex = state[categoryIndex].list.findIndex((item) => item.title === currentTitle);
-      state[categoryIndex].list.splice(titleIndex, 0, { title: prevTitle, url: prevUrl });
+    //   let categoryIndex = state.findIndex((item) => item.category === currentCategory);
+    //   let titleIndex = state[categoryIndex].list.findIndex((item) => item.title === currentTitle);
+    //   state[categoryIndex].list.splice(titleIndex, 0, { title: prevTitle, url: prevUrl });
+    // },
+    reBookMark(state, action) {
+      return action.payload;
     },
   },
 });
 
-export let { dragAndDrop, removeCategory, addBookMark, addList, removeList, changeList, copyLocalStorage, editCategory } = bookMark.actions;
+export let { reBookMark, dragAndDrop, removeCategory, addBookMark, addList, removeList, changeList, copyLocalStorage, editCategory } = bookMark.actions;
 
 export let mode = createSlice({
   name: "mode",
