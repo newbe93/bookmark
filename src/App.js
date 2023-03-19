@@ -14,7 +14,8 @@ function App() {
       localStorage.setItem("bookMark", JSON.stringify([]));
     } else if (JSON.parse(localStorage.getItem("bookMark"))?.length !== 0) {
       dispatch(copyLocalStorage(JSON.parse(localStorage.getItem("bookMark"))));
-      return;
+    } else {
+      localStorage.setItem("bookMark", JSON.stringify([]));
     }
   }, []);
   useEffect(() => {

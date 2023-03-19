@@ -1,17 +1,17 @@
+import { faBookBookmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Nav } from "react-bootstrap";
-
+import styles from "../NavBar.module.css";
 function NavBar() {
   return (
-    <div className="navbar-section">
+    <div className={styles.navbarSection}>
       <Nav activeKey="/">
         <Nav.Item>
-          <Nav.Link eventKey="/">Active</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link eventKey="link-1">Link</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link eventKey="link-2">Link</Nav.Link>
+          <Nav.Link eventKey="/">
+            <button className={styles.logo}>
+              <FontAwesomeIcon icon={faBookBookmark} size="2x" />
+            </button>
+          </Nav.Link>
         </Nav.Item>
       </Nav>
     </div>

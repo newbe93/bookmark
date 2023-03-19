@@ -1,0 +1,38 @@
+.sideBar {
+  display: block;
+  width: 250px;
+  padding: 10px;
+  background-color: white;
+  margin-right: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 255, 0.2);
+  transition: all 0.5s;
+}
+
+.sideBar .container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.5s;
+}
+
+.container .sideBarTitle {
+  font-size: 14px;
+  padding: 20px;
+}
+
+.close {
+  width: 0;
+}
+
+.close .container {
+  transform: translateX(-50px);
+}
+
+.editBox {
+  display: flex;
+  justify-content: space-between;
+}

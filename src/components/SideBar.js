@@ -1,10 +1,31 @@
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addBookMark, addList, changeCategory, changeList, changeTextArea, changeTitle, copyList, modeChange, removeList } from "../store/userSlice";
+import { addBookMark, addList, changeCategory, changeList, changeTextArea, changeTitle, clearList, copyList, modeChange, removeList, searchList, searchMode } from "../store/userSlice";
+import { Searchrender } from "./MainContent";
+import styles from "../SideBar.module.css";
 
 function SideBar() {
   let dispatch = useDispatch();
   let state = useSelector((state) => state);
+
+  useEffect(() => {
+    dispatch(clearList([]));
+    let searchCategory = state.bookMark.filter((a, i) => {
+      let result = a.list.findIndex((a) => {
+        return a.title.includes(state.searchValue);
+      });
+
+      return result !== -1;
+    });
+
+    searchCategory.map((a) => {
+      let searchTitle = a.list.filter((a, i) => {
+        return a.title.includes(state.searchValue);
+      });
+      dispatch(searchList({ category: a.category, list: searchTitle }));
+    });
+  }, [state.bookMark]);
   let options = state.bookMark;
   function clearAll() {
     dispatch(changeCategory(""));
@@ -26,9 +47,9 @@ function SideBar() {
   }
 
   return (
-    <div className="side-bar">
-      <div className="container">
-        <h5 className="side-bar-title">북마크 추가하기</h5>
+    <div className={`${styles.sideBar} ${state.tab === "close" ? styles.close : ""}`}>
+      <div className={styles.container}>
+        <h5 className={styles.sideBarTitle}>북마크 추가하기</h5>
         <select
           onChange={(e) => {
             clearAll();
@@ -109,12 +130,10 @@ function SideBar() {
               </button>
             ),
             edit: (
-              <div>
+              <div className={styles.editBox}>
                 <button
                   onClick={(e) => {
-                    // let value = e.target.parentElement.parentElement.children[0].children[0].innerText;
                     dispatch(removeList({ category: state.category, title: state.title }));
-                    localStorage.setItem("bookMark", JSON.stringify(state.bookMark));
                     dispatch(modeChange("create"));
                     clearAll();
                   }}

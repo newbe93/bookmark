@@ -1,16 +1,31 @@
 import { useDispatch, useSelector } from "react-redux";
-import { changevalue, clearList, isSearch, searchList, searchMode } from "../store/userSlice";
+import { changevalue, clearList, isSearch, searchList, searchMode, setTab } from "../store/userSlice";
 import BookmarkCategory from "./BookmarkCategory";
-
+import styles from "../MainContent.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretRight, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 function MainContent() {
   let dispatch = useDispatch();
   let state = useSelector((state) => state);
+
   return (
-    <div className="main-content">
-      <button className="side-bar-button">열림</button>
-      <div className="container">
+    <div className={styles.mainContent}>
+      <button
+        className={`${styles.sideBarButton} ${state.tab === "close" ? styles.close : ""}`}
+        onClick={() => {
+          if (state.tab === "close") {
+            dispatch(setTab("open"));
+          } else {
+            dispatch(setTab("close"));
+          }
+        }}
+      >
+        <FontAwesomeIcon icon={faCaretRight} />
+      </button>
+      <div className={styles.container}>
         <h2>MarkCart</h2>
-        <div>
+        <div className={styles.searchBarBox}>
           <input
             placeholder="북마크 찾기"
             onChange={(e) => {
@@ -39,10 +54,10 @@ function MainContent() {
               dispatch(searchMode(true));
             }}
           >
-            찾기
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
           </button>
         </div>
-        <div className="bookmark-area">
+        <div className={styles.bookmarkArea}>
           <div className="row">
             <BookmarkCategory></BookmarkCategory>
           </div>

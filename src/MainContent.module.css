@@ -1,0 +1,61 @@
+.mainContent {
+  position: relative;
+  flex-grow: 1;
+  background-color: white;
+}
+.sideBarButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px;
+  line-height: 0;
+  font-size: 30px;
+  background-color: white;
+  border: none;
+  transform: rotate(180deg);
+  color: var(--main-color-2);
+}
+
+.close {
+  transform: rotate(0);
+}
+
+.mainContent .container {
+  padding: 30px 70px;
+  text-align: left;
+}
+
+.container h2 {
+  color: var(--main-color-2);
+}
+
+.container button {
+  height: 100%;
+}
+
+.mainContent .container input {
+  font-size: 14px;
+  padding: 5px;
+  border: none;
+}
+
+.searchBarBox {
+  display: flex;
+  width: 250px;
+  align-items: center;
+  border: 1px solid var(--main-color-2);
+}
+.searchBarBox input {
+  flex-grow: 1;
+}
+.searchBarBox button {
+  padding: 5px 10px;
+  background-color: white;
+  color: var(--main-color-2);
+  border: none;
+}
+
+.bookmarkArea {
+  width: 100%;
+  margin-top: 20px;
+}

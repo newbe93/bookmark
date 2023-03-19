@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { bookMark, category, isSearch, mode, prevList, searchBookMark, searchValue, textArea, title } from "./store/userSlice";
+import { bookMark, category, isSearch, modal, mode, prevList, searchBookMark, searchValue, tab, textArea, title } from "./store/userSlice";
 
 export default configureStore({
   reducer: {
@@ -12,5 +12,7 @@ export default configureStore({
     searchValue: searchValue.reducer,
     searchBookMark: searchBookMark.reducer,
     isSearch: isSearch.reducer,
+    modal: modal.reducer,
+    tab: tab.reducer,
   },
 });

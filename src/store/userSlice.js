@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 export let bookMark = createSlice({
   name: "bookMark",
   initialState: [
-    { category: "redux", list: [{ title: "redux 정의", url: "asd" }] },
-    { category: "html", list: [{ title: "html 정의", url: "fgh" }] },
+    // { category: "redux", list: [{ title: "redux 정의", url: "asd" }] },
+    // { category: "html", list: [{ title: "html 정의", url: "fgh" }] },
   ],
   reducers: {
     addBookMark(state, action) {
@@ -34,10 +34,18 @@ export let bookMark = createSlice({
     copyLocalStorage(state, action) {
       return action.payload;
     },
+    editCategory(state, action) {
+      let categoryIndex = state.findIndex((item) => item.category === action.payload.category);
+      state[categoryIndex].category = action.payload.value;
+    },
+    removeCategory(state, action) {
+      let categoryIndex = state.findIndex((item) => item.category === action.payload.category);
+      state.splice(categoryIndex, 1);
+    },
   },
 });
 
-export let { addBookMark, addList, removeList, changeList, copyLocalStorage } = bookMark.actions;
+export let { removeCategory, addBookMark, addList, removeList, changeList, copyLocalStorage, editCategory } = bookMark.actions;
 
 export let mode = createSlice({
   name: "mode",
@@ -139,3 +147,27 @@ export let isSearch = createSlice({
 });
 
 export let { searchMode } = isSearch.actions;
+
+export let modal = createSlice({
+  name: "modal",
+  initialState: false,
+  reducers: {
+    setModal(state, action) {
+      return action.payload;
+    },
+  },
+});
+
+export let { setModal } = modal.actions;
+
+export let tab = createSlice({
+  name: "tab",
+  initialState: "open",
+  reducers: {
+    setTab(state, action) {
+      return action.payload;
+    },
+  },
+});
+
+export let { setTab } = tab.actions;
