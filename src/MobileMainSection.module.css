@@ -2,11 +2,20 @@
   height: 100%;
   margin-top: 55px;
   display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
+.modalBgBlack {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.5;
+}
 .modalBg {
   z-index: 1;
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100%;
   backdrop-filter: blur(2px);
@@ -15,8 +24,8 @@
   border: 1px solid black;
   font-size: 14px;
   padding: 20px;
-  position: absolute;
-  width: 20%;
+  position: fixed;
+  width: 50%;
   background-color: white;
   top: 40%;
   left: 50%;

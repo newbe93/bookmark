@@ -1,7 +1,7 @@
 import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch, useSelector } from "react-redux";
-import { addList, changeCategory, changeTextArea, changeTitle, copyList, dragAndDrop, modeChange, reBookMark, removeList, setModal } from "../store/userSlice";
+import { addList, changeCategory, changeTextArea, changeTitle, copyList, dragAndDrop, modeChange, reBookMark, removeList, setModal, setTab } from "../store/userSlice";
 import styles from "../BookmarkItem.module.css";
 import { useEffect, useRef, useState } from "react";
 
@@ -17,14 +17,10 @@ function BookmarkItem({ bookmarkList }) {
     setList(state.bookMark);
     console.log(state.bookMark);
   }, [state.bookMark]);
-  // useEffect(() => {
-  //   if (list.length === 0) return;
-  //   dispatch(reBookMark(list));
-  // }, [list]);
+
   let dispatch = useDispatch();
   function handleDragStart(e, item) {
     dragItemNode.current = { target: e.target, item };
-    // dragItemNode.current.target.addEventListener("dragend", handleDragEnd);
     dragItem.current = item;
 
     setTimeout(() => {
@@ -60,7 +56,6 @@ function BookmarkItem({ bookmarkList }) {
     setDragging(false);
 
     dragItem.current = null;
-    // dragItemNode.current.target.removeEventListener("dragend", handleDragEnd);
     dragItemNode.current = null;
   }
 
@@ -88,7 +83,6 @@ function BookmarkItem({ bookmarkList }) {
                   <div className={styles.categoryList}>
                     <ul
                       onDragEnter={(e) => {
-                        // handleDragEnter(e, { grp, grpI, itemI: 0 });
                         if (dragging && grp.list.length === 0) {
                           handleDragEnter(e, { grp, grpI, itemI: 0 });
                         } else {
@@ -114,7 +108,6 @@ function BookmarkItem({ bookmarkList }) {
                                 } else {
                                   return null;
                                 }
-                                // handleDragEnter(e, { grp, grpI, itemI });
                               }}
                               onDragEnd={(e) => {
                                 handleDragEnd(e);
@@ -126,6 +119,7 @@ function BookmarkItem({ bookmarkList }) {
                               <button
                                 onClick={(e) => {
                                   dispatch(modeChange("edit"));
+                                  dispatch(setTab("up"));
                                   dispatch(changeCategory(category));
                                   dispatch(changeTitle(item.title));
                                   dispatch(changeTextArea(item.url));

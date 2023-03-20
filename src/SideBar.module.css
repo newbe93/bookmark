@@ -3,9 +3,11 @@
   width: 250px;
   padding: 10px;
   background-color: white;
+  overflow: hidden;
   margin-right: 5px;
   box-shadow: 2px 2px 5px rgba(0, 0, 255, 0.2);
   transition: all 0.5s;
+  transform: translateX(0px);
 }
 
 .sideBar .container {
@@ -26,10 +28,11 @@
 
 .close {
   width: 0;
+  padding: 0px;
 }
 
 .close .container {
-  transform: translateX(-50px);
+  transform: translateX(-200px);
 }
 
 .editBox {

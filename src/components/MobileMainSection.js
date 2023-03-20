@@ -1,18 +1,20 @@
-import MainContent from "./MainContent";
-import SideBar from "./SideBar";
-import styles from "../MainSection.module.css";
+import MobileMainContent from "./MobileMainContent";
+import MobileSideBar from "./MobileSideBar";
+import styles from "../MobileMainSection.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { changeCategory, copyList, editCategory, removeCategory, setModal } from "../store/userSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useMediaQuery } from "react-responsive";
+import { useState } from "react";
 
-function MainSection() {
+function MobileMainSection() {
   let state = useSelector((state) => state);
   let dispatch = useDispatch();
 
   return (
     <div className={styles.mainSection}>
+      {state.tab === "up" ? <div className={styles.modalBgBlack}></div> : null}
       {state.modal ? (
         <div className={styles.modalBg}>
           <div className={styles.modal}>
@@ -53,10 +55,9 @@ function MainSection() {
         </div>
       ) : null}
 
-      <SideBar></SideBar>
-      <MainContent></MainContent>
+      <MobileMainContent></MobileMainContent>
     </div>
   );
 }
 
-export default MainSection;
+export default MobileMainSection;
