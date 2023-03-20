@@ -44,11 +44,10 @@ export let bookMark = createSlice({
       state.splice(categoryIndex, 1);
     },
     dragAndDrop(state, action) {
-      const { prevCategory, prevTitle, prevUrl, currentCategory, currentTitle, currentList } = action.payload;
-
-      let categoryIndex = state.findIndex((item) => item.category === currentCategory);
-      let titleIndex = state[categoryIndex].list.findIndex((item) => item.title === currentTitle);
-      state[categoryIndex].list.splice(titleIndex, 0, { title: prevTitle, url: prevUrl });
+      const { dragItemgrpI, dragItemlistI, targetItemgrpI, targetItemlistI } = action.payload;
+      console.log(dragItemgrpI, dragItemlistI, targetItemgrpI, targetItemlistI);
+      const draggedItem = state[dragItemgrpI].list.splice(dragItemlistI, 1)[0];
+      state[targetItemgrpI].list.splice(targetItemlistI, 0, draggedItem);
     },
   },
 });
