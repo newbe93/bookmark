@@ -15,7 +15,6 @@ function BookmarkItem({ bookmarkList }) {
   let state = useSelector((state) => state);
   useEffect(() => {
     setList(state.bookMark);
-    console.log(state.bookMark);
   }, [state.bookMark]);
 
   let dispatch = useDispatch();
