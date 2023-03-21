@@ -1,6 +1,6 @@
 import MainContent from "./MainContent";
 import SideBar from "./SideBar";
-import styles from "../MainSection.module.css";
+import styles from "../css/MainSection.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { changeCategory, copyList, editCategory, removeCategory, setModal } from "../store/userSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

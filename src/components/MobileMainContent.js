@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { changevalue, clearList, isSearch, searchList, searchMode, setTab } from "../store/userSlice";
 import BookmarkCategory from "./BookmarkCategory";
-import styles from "../MobileMainContent.module.css";
+import styles from "../css/MobileMainContent.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretRight, faCirclePlus, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";

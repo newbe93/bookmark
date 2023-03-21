@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addBookMark, addList, changeCategory, changeList, changeTextArea, changeTitle, clearList, copyList, modeChange, removeList, searchList, searchMode, setModal, setTab } from "../store/userSlice";
 import { Searchrender } from "./MainContent";
-import styles from "../MobileSideBar.module.css";
+import styles from "../css/MobileSideBar.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 

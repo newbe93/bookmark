@@ -7,9 +7,10 @@
   overflow: hidden;
   bottom: 0;
   background-color: white;
-  box-shadow: 2px 2px 5px rgba(0, 0, 255, 0.2);
+
   transform: translateY(400px);
   transition: all 0.5s;
+  border-radius: 5px;
 }
 .up {
   padding: 10px;

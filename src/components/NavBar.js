@@ -1,7 +1,7 @@
 import { faBookBookmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Nav } from "react-bootstrap";
-import styles from "../NavBar.module.css";
+import styles from "../css/NavBar.module.css";
 function NavBar() {
   return (
     <div className={styles.navbarSection}>

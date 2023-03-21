@@ -2,7 +2,7 @@ import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch, useSelector } from "react-redux";
 import { addList, changeCategory, changeTextArea, changeTitle, copyList, dragAndDrop, modeChange, reBookMark, removeList, setModal, setTab } from "../store/userSlice";
-import styles from "../BookmarkItem.module.css";
+import styles from "../css/BookmarkItem.module.css";
 import { useEffect, useRef, useState } from "react";
 
 function BookmarkItem({ bookmarkList }) {

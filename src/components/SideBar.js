@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addBookMark, addList, changeCategory, changeList, changeTextArea, changeTitle, clearList, copyList, modeChange, removeList, searchList, searchMode } from "../store/userSlice";
 import { Searchrender } from "./MainContent";
-import styles from "../SideBar.module.css";
+import styles from "../css/SideBar.module.css";
 
 function SideBar() {
   let dispatch = useDispatch();

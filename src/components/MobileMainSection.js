@@ -1,6 +1,6 @@
 import MobileMainContent from "./MobileMainContent";
 import MobileSideBar from "./MobileSideBar";
-import styles from "../MobileMainSection.module.css";
+import styles from "../css/MobileMainSection.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { changeCategory, copyList, editCategory, removeCategory, setModal } from "../store/userSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
